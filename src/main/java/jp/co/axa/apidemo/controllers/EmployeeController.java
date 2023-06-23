@@ -2,12 +2,9 @@ package jp.co.axa.apidemo.controllers;
 
 import java.util.List;
 
-import javax.validation.Valid;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,8 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.Api;
@@ -27,11 +22,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-import jdk.internal.org.jline.utils.Log;
-import jp.co.axa.apidemo.config.EHCacheEventLogger;
-import jp.co.axa.apidemo.constants.ErrorCode;
 import jp.co.axa.apidemo.entities.Employee;
-import jp.co.axa.apidemo.exception.EmployeeNotFoundException;
 import jp.co.axa.apidemo.exception.EmployeeServiceException;
 import jp.co.axa.apidemo.helper.ResponseProvider;
 import jp.co.axa.apidemo.services.EmployeeService;
@@ -43,13 +34,13 @@ public class EmployeeController {
 	
     private static final Logger Log = LoggerFactory.getLogger(EmployeeController.class);
 
-
+    
     @Autowired
     private EmployeeService employeeService;
 
-    public void setEmployeeService(EmployeeService employeeService) {
-        this.employeeService = employeeService;
-    }
+	public void setEmployeeService(EmployeeService employeeService) {
+		this.employeeService = employeeService;
+	}
     
     @PreAuthorize("hasRole('ADMIN')")
     @ApiOperation(value = "get all employees data")

@@ -38,7 +38,7 @@ public  class EmployeeServiceImpl implements EmployeeService{
         return optEmp.get();
         }
         else {
-        	throw new EmployeeNotFoundException("Employee Id"+employeeId +" is not exist ",ErrorCode.NO_DATA);
+        	throw new EmployeeNotFoundException("Employee Id "+employeeId +" is not exist ",ErrorCode.NO_DATA);
         }
     }
     @CachePut(value = "employee", key = "#postEmployee.id")
@@ -54,7 +54,7 @@ public  class EmployeeServiceImpl implements EmployeeService{
     public String deleteEmployee(Long employeeId) {
         if (getEmployee(employeeId) != null) {
             employeeRepository.deleteById(employeeId);
-            return "Employee Id data deleted sucssefully";
+            return "Employee Id "+employeeId +" data deleted sucssefully";
         }
 		return "No employee data found for enterd id";
     }
