@@ -46,7 +46,7 @@ Application (with the embedded H2 database) is ready to be used ! You can access
 #### Whta I did
   - Add tests
     >>Add Junit testcase for Controller and Service class. Also check code covergae using 
-     EcLEmma Java Code Coverage Tool.Used Juint5 and Mockito.
+     EcLEmma Java Code Coverage Tool.Used Juint5 and Mockito.Current code coverage is 60%
   - Change syntax
   - Protect controller end points
     >>Implemented with spring security with JWT (Also added roles ADMIN and USER)
@@ -74,6 +74,7 @@ Application (with the embedded H2 database) is ready to be used ! You can access
 - Would have Implement logging using spring AOP
 - Would have implement spring actuator for checking health and monitoring
 - Would have modify the code to pass code quality as per sonar standred
+- Would have implement testcase for other class aprat from Controller and Service class 
   #### How to access Apis
   #### Step 1:Login
   - For Login has two role
