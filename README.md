@@ -49,7 +49,7 @@ Application (with the embedded H2 database) is ready to be used ! You can access
      EcLEmma Java Code Coverage Tool.Used Juint5 and Mockito.
   - Change syntax
   - Protect controller end points
-    >>Implemented Role base authorization using spring security with JWT
+    >>Implemented with spring security with JWT (Also added roles ADMIN and USER)
 - Add caching logic for database calls
     >> Implemented it using EH cache.
 - Improve doc and comments
@@ -69,10 +69,11 @@ Application (with the embedded H2 database) is ready to be used ! You can access
 
   #### What I would have done if I had more time
 - Would have configured role based spring security with database and created one more Endpoint 
-  for user registration 
-- Would have Implemented logging using spring AOP
-- Would have implemented spring actuator for checking health and monitoring
-- Would have modified the code to pass code quality as per sonar standred
+  for user registration
+- Addition to implemented role base access would have implement more in detail Example:only logged in user able to update own data etc
+- Would have Implement logging using spring AOP
+- Would have implement spring actuator for checking health and monitoring
+- Would have modify the code to pass code quality as per sonar standred
   #### How to access Apis
   #### Step 1:Login
   - For Login has two role
@@ -86,7 +87,7 @@ Application (with the embedded H2 database) is ready to be used ! You can access
 
     >>Description:<br>
     >>1)Admin: Has all permission to do all employee operation.<br>
-    >>2)User:  Has only create and update permission<br>
+    >>2)User:  Has only create permission<br>
   -  Login with any above username and password and get the token
    - URL: http://localhost:8080/api/v1/login
    - Request body 
@@ -109,7 +110,8 @@ Application (with the embedded H2 database) is ready to be used ! You can access
          
    **Note :1)Do not forget to add "Bearer" before token to access api<br>
            2)In  employee endpoints ignore the value of id while creating,updating
-
+####TestCase Run
+- Run `mvn clean test` for starting the testcase 
 
 #### Your experience in Java
 
