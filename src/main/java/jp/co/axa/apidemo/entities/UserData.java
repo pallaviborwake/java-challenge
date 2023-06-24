@@ -20,7 +20,7 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "USERDATA")
-public class UserData implements Serializable, GrantedAuthority {
+public class UserData implements Serializable {
 
     private static final long serialVersionUID = 5926468583005150707L;
 
@@ -29,6 +29,8 @@ public class UserData implements Serializable, GrantedAuthority {
     private String id;
     private String username = "";
     private String password = "";
+    
+    @ApiModelProperty(required = false,hidden=true) 
     private String role = "";
 
     //need default constructor for JSON Parsing
@@ -65,11 +67,6 @@ public class UserData implements Serializable, GrantedAuthority {
 
     public void setRole(String role) {
         this.role = role;
-    }
-
-    @Override
-    public String getAuthority() {
-        return this.role;
     }
 
     @Override
