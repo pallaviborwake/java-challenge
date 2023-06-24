@@ -109,13 +109,13 @@ public class EmployeeController {
     
     /*
  	 * This method update specific employee deatils by its Id .
-   	 * @PreAuthorize  Admin or User can access this method
+   	 * @PreAuthorize only  Admin can access this method
  	 * @param header token
  	 * @param EmployeeId
  	 * @return Employees object
  	 * @EmployeeServiceException occured when employee id is not exist
  	 */  
-    @PreAuthorize("hasAnyRole('USER','ADMIN')")
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @ApiOperation(value = "update employees",response=Employee.class)
     @ApiImplicitParam(name = "Authorization", value = "Access Token", required = true, allowEmptyValue = false, paramType = "header", dataTypeClass = String.class, example = "Bearer access_token")
     @ApiResponses({

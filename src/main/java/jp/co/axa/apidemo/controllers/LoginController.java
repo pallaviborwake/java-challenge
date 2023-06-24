@@ -43,6 +43,14 @@ public class LoginController {
 	@Autowired
 	private UserDetailsServiceImp userDetailsService;
 
+	/*
+	 * This method authenticate username password is valid or not and then generate jwt token
+	 * @param UserData :Username and password
+	 * @return token,username and Authorities
+	 * @DisabledException
+	 * @ApiException
+	 */
+	
 	@ApiOperation(value = "Login")
 	@ApiResponses(value = { @ApiResponse(code = 500, message = "Something went wrong"),
 			@ApiResponse(code = 401, message = "Invalid Credentials") })
@@ -53,6 +61,7 @@ public class LoginController {
 
 		final UserDetails userDetails = userDetailsService.loadUserByUsername(request.getUsername());
 		final String token = jwtTokenUtil.generateToken(userDetails);
+
 		return ResponseEntity.ok(new LoginResponse(token,userDetails.getUsername(),userDetails.getAuthorities().toArray()[0].toString()));
 	}
 

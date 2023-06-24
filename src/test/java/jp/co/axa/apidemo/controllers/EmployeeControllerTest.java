@@ -3,7 +3,8 @@
  */
 package jp.co.axa.apidemo.controllers;
 
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,11 +18,12 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import jp.co.axa.apidemo.constants.ErrorCode;
 import jp.co.axa.apidemo.entities.Employee;
+import jp.co.axa.apidemo.exception.ApiException;
 import jp.co.axa.apidemo.exception.EmployeeNotFoundException;
 import jp.co.axa.apidemo.exception.EmployeeServiceException;
 import jp.co.axa.apidemo.services.EmployeeService;
-
 
 @ExtendWith(MockitoExtension.class)
 public class EmployeeControllerTest {
@@ -31,7 +33,6 @@ public class EmployeeControllerTest {
 
 	@Mock
 	private EmployeeService employeeService;
-
 
 	@Test
 	public void testGetAllEmployees() {
@@ -47,7 +48,7 @@ public class EmployeeControllerTest {
 
 	@Test
 	public void testGetEmployeeDataId() {
-		long employeeId=1;
+		long employeeId = 1;
 		Employee employee = new Employee();
 		employee.setName("Name");
 		employee.setDepartment("HR");
@@ -55,24 +56,28 @@ public class EmployeeControllerTest {
 
 		Assert.assertNotNull(employeeController.getEmployeeDataId(employeeId));
 	}
-	
+
 	@Test
 	public void testGetEmployeeDataIdException() {
-		long employeeId=1;
+		long employeeId = 1;
 		Employee employee = new Employee();
 		employee.setName("Name");
 		employee.setDepartment("HR");
 		Mockito.when(employeeService.getEmployee(employeeId)).thenThrow(EmployeeNotFoundException.class);
 
-		try {
-			employeeController.getEmployeeDataId(employeeId);
-		}catch(EmployeeServiceException e) {
-			Assertions.assertEquals(null,e.getMessage());
+//		try {
+//			employeeController.getEmployeeDataId(employeeId);
+//		} catch (EmployeeServiceException e) {
+//			Assertions.assertEquals(null, e.getMessage());
+//
+//		}
+		
+		EmployeeServiceException e = assertThrows(EmployeeServiceException.class,
+                () -> employeeController.getEmployeeDataId(employeeId));
+		Assertions.assertEquals(null, e.getMessage());
 
-		}
-	
 	}
-	
+
 	@Test
 	public void testSaveEmployeeData() {
 		Employee employee = new Employee();
@@ -81,36 +86,41 @@ public class EmployeeControllerTest {
 		Mockito.when(employeeService.saveEmployee(employee)).thenReturn(employee);
 		Assert.assertNotNull(employeeController.saveEmployeeData(employee));
 	}
-	
+
 	@Test
 	public void testUpdateEmployeeData() {
-		long employeeId=1;
+		long employeeId = 1;
 		Employee employee = new Employee();
 		employee.setName("Name");
 		employee.setDepartment("HR");
 		Mockito.when(employeeService.updateEmployee(employee, employeeId)).thenReturn(employee);
-		Assert.assertNotNull(employeeController.updateEmployeeData(employee,employeeId));
+		Assert.assertNotNull(employeeController.updateEmployeeData(employee, employeeId));
 	}
-	
+
 	@Test
 	public void testUpdateEmployeeDataException() {
-		long employeeId=1;
+		long employeeId = 1;
 		Employee employee = new Employee();
 		employee.setId((long) 10);
 		employee.setName("Name");
 		employee.setDepartment("HR");
 		Mockito.when(employeeService.updateEmployee(employee, employeeId)).thenThrow(EmployeeNotFoundException.class);
-		try {
-			employeeController.updateEmployeeData(employee,employeeId);
-		}catch(EmployeeServiceException e) {
-			Assertions.assertEquals(null,e.getMessage());
+//		try {
+//			employeeController.updateEmployeeData(employee, employeeId);
+//		} catch (EmployeeServiceException e) {
+//			Assertions.assertEquals(null, e.getMessage());
+//
+//		}
+		
+		EmployeeServiceException e = assertThrows(EmployeeServiceException.class,
+                () -> employeeController.updateEmployeeData(employee, employeeId));
+		Assertions.assertEquals(null, e.getMessage());
 
-		}
 	}
-	
+
 	@Test
 	public void testDeleteEmployeeData() {
-		long employeeId=1;
+		long employeeId = 1;
 		Employee employee = new Employee();
 		employee.setName("Name");
 		employee.setDepartment("HR");

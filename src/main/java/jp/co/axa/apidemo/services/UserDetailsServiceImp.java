@@ -33,7 +33,6 @@ public class UserDetailsServiceImp implements UserDetailsService {
 
            if (userData != null) {
                 Collection<String> mappedAuthorities = Arrays.asList(userData.getRole().split(","));
-                // if not using role based authentication, we can pass empty List instead of mappedAuthorities
                 User user = new User(username, new BCryptPasswordEncoder().encode(userData.getPassword()), mappedAuthorities.stream().map(SimpleGrantedAuthority::new).collect(Collectors.toList()));
                 return user;
             
