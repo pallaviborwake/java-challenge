@@ -34,6 +34,9 @@ public class EmployeeController {
 	
     private static final Logger Log = LoggerFactory.getLogger(EmployeeController.class);
 
+    /*
+     * Set the employee service
+     */
     
     @Autowired
     private EmployeeService employeeService;
@@ -41,7 +44,13 @@ public class EmployeeController {
 	public void setEmployeeService(EmployeeService employeeService) {
 		this.employeeService = employeeService;
 	}
-    
+	
+	/*
+	 * This method return all employee deatils which exist.
+	 * @PreAuthorize only Admin can access this method
+	 * @param header token
+	 * @return Employees list
+	 */  
     @PreAuthorize("hasRole('ADMIN')")
     @ApiOperation(value = "get all employees data")
     @ApiImplicitParam(name = "Authorization", value = "Access Token", required = true, allowEmptyValue = false, paramType = "header", dataTypeClass = String.class, example = "Bearer access_token")
@@ -51,8 +60,15 @@ public class EmployeeController {
         return employees;
     }   
     
-    
-     @PreAuthorize("hasRole('ADMIN')")
+    /*
+	 * This method return specific employee deatils by its Id .
+	 * @PreAuthorize only Admin can access this method
+	 * @param header token
+	 * @param EmployeeId
+	 * @return Employees object
+	 * @EmployeeServiceException occured when employee id is not exist
+	 */   
+    @PreAuthorize("hasRole('ADMIN')")
     @ApiOperation(value = "get data by employee id",response=Employee.class)
     @ApiImplicitParam(name = "Authorization", value = "Access Token", required = true, allowEmptyValue = false, paramType = "header", dataTypeClass = String.class, example = "Bearer access_token")
     @ApiResponses({
@@ -71,8 +87,15 @@ public class EmployeeController {
                throw ex;
            }
     }
-
-     @PreAuthorize("hasAnyRole('USER','ADMIN')")
+    
+    /*
+   	 * This method create new employee object  .
+   	 * @PreAuthorize  Admin or User can access this method
+   	 * @param header token
+   	 * @param employee object
+   	 * @return Employees object
+   	 */
+    @PreAuthorize("hasAnyRole('USER','ADMIN')")
     @ApiOperation(value = "save employees",response=Employee.class)
     @ApiImplicitParam(name = "Authorization", value = "Access Token", required = true, allowEmptyValue = false, paramType = "header", dataTypeClass = String.class, example = "Bearer access_token")
     @ApiResponses(value = {
@@ -83,7 +106,16 @@ public class EmployeeController {
         return employeeService.saveEmployee(employee);
     }
 
-     @PreAuthorize("hasAnyRole('USER','ADMIN')")
+    
+    /*
+ 	 * This method update specific employee deatils by its Id .
+   	 * @PreAuthorize  Admin or User can access this method
+ 	 * @param header token
+ 	 * @param EmployeeId
+ 	 * @return Employees object
+ 	 * @EmployeeServiceException occured when employee id is not exist
+ 	 */  
+    @PreAuthorize("hasAnyRole('USER','ADMIN')")
     @ApiOperation(value = "update employees",response=Employee.class)
     @ApiImplicitParam(name = "Authorization", value = "Access Token", required = true, allowEmptyValue = false, paramType = "header", dataTypeClass = String.class, example = "Bearer access_token")
     @ApiResponses({
@@ -104,7 +136,15 @@ public class EmployeeController {
         }
     }
     
-     @PreAuthorize("hasRole('ADMIN')")
+    
+    /*
+   	 * This method delete employee object by its id .
+   	 * @PreAuthorize  only Admin can access this method
+   	 * @param header token
+   	 * @param employeeId 
+   	 * @return String meassage 
+   	 */
+    @PreAuthorize("hasRole('ADMIN')")
 	@ApiOperation(value = "delete employees")
 	@ApiImplicitParam(name = "Authorization", value = "Access Token", required = true, allowEmptyValue = false, paramType = "header", dataTypeClass = String.class, example = "Bearer access_token")
 	@ApiResponses({ @ApiResponse(code = 500, message = "Something went wrong"),

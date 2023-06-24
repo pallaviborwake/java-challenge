@@ -31,13 +31,7 @@ public class UserDetailsServiceImp implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         UserData userData = userDataRepo.findByUsername(username);
 
-       // if ("axaUser".equals(username)) {
-        //    return new User("axaUser", "$2a$10$slYQmyNdGzTn7ZLBXBChFOC9f6kFjAqPhccnP6DxlWXx2lPk1C3G6",
-                 //   new ArrayList<>());
-            
-            
-            
-            if (userData != null) {
+           if (userData != null) {
                 Collection<String> mappedAuthorities = Arrays.asList(userData.getRole().split(","));
                 // if not using role based authentication, we can pass empty List instead of mappedAuthorities
                 User user = new User(username, new BCryptPasswordEncoder().encode(userData.getPassword()), mappedAuthorities.stream().map(SimpleGrantedAuthority::new).collect(Collectors.toList()));
