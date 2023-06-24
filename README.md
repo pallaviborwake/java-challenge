@@ -79,38 +79,36 @@ Application (with the embedded H2 database) is ready to be used ! You can access
     >>1)Role    :ADMIN / USER                       
     >>  Username:axaUser                                
     >>  Password:password                              
-    >>  Authority:ADMIN /USER                            
 
     >>2)Role    :USER<br>
     >>  Username:otherAxa<br>
     >>  Password:pass123<br>
-    >>  Authority:USER<br>
 
     >>Description:<br>
     >>1)Admin: Has all permission to do all employee operation.<br>
     >>2)User:  Has only create and update permission<br>
-  -  Login with any above credentials and get the token
+  -  Login with any above username and password and get the token
    - URL: http://localhost:8080/api/v1/login
    - Request body 
     >> {<br>
-        "authority": "USER",<br>
         "password": "password",<br>
-        "role": "USER",<br>
        "username": "axaUser"<br>
        }<br>
     - Response Body <br>
     >> {<br>
-         "token": <br>
-         "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJheGFVc2VyIiwiUm9sZXMiOlsiUk9MRV9VU0VSIiwiUk9MR<br>
-          V9BRE1JTiJdLCJleHAiOjE2ODc2MDI3NzIsImlhdCI6MTY4NzU4NDc3Mn0.XHDf95OpoR_i_wWpdS0CgG- <br>
-         QfabMuhd7nOT83ZQ67BYSHn0ERo1oJ8tVtXuZNtOqaUJAuaiKfi9YVT7vyVlSmw"<br>
-        }<br>
-- Add token in the Authorization header for accessing all APIs as following
+         "token": <br> 
+          "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJheGFVc2VyIiwiUm9sZXMiOlsiUk9MRV9VU0VSIiwiUk9MRV9BRE1JTiJdLCJleHAiOjE2ODc2MTkzNzgsIml<br>
+           hdCI6MTY4NzYwMTM3OH0.kPWMIPW_ifc-p2CnNqOfSiLnDTrn2L7MJcVFll05xd-ZuWwii9yI2S7JXArV3Tytg-kMN-2c0bJqDBIg2vh4AA",
+       "username": "axaUser",<br>
+       "role": "ROLE_ADMIN"<br>
+}<br>
+- Add token in the Authorization header for accessing all APIs as following(Example)
     >>Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJheGFVc2VyIiwiUm9sZXMiOlsiUk9MRV9VU0VSIiwiUk9MR<br>
           V9BRE1JTiJdLCJleHAiOjE2ODc2MDI3NzIsImlhdCI6MTY4NzU4NDc3Mn0.XHDf95OpoR_i_wWpdS0CgG-<br> 
          QfabMuhd7nOT83ZQ67BYSHn0ERo1oJ8tVtXuZNtOqaUJAuaiKfi9YVT7vyVlSmw<br>
          
-   **Note :Do not forget to add "Bearer" before token to access api
+   **Note :1)Do not forget to add "Bearer" before token to access api<br>
+           2)In  employee endpoints ignore the value of id while creating,updating
 
 
 #### Your experience in Java
