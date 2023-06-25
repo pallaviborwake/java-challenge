@@ -45,7 +45,7 @@ Application (with the embedded H2 database) is ready to be used ! You can access
 
 #### Whta I did
   - Add tests
-    >>Add Junit testcase for Controller and Service class. Also check code covergae using 
+    >>Added Junit testcase for Controller and Service class. Also check code covergae using 
      EcLEmma Java Code Coverage Tool.Used Juint5 and Mockito.Current code coverage is 60%
   - Change syntax
   - Protect controller end points
@@ -70,12 +70,13 @@ Application (with the embedded H2 database) is ready to be used ! You can access
   #### What I would have done if I had more time
 - Would have configured role based spring security with database and created one more Endpoint 
   for user registration
-- Addition to implemented role base access would have implement more in detail Example:only logged in user able to update own data etc
+- Addition to implemented role base access would have implement more in detail. For Example:only logged in user able to update own data etc
 - Would have Implement logging using spring AOP
 - Would have implement spring actuator for checking health and monitoring
 - Would have modify the code to pass code quality as per sonar standred
-- Would have implement testcase for other class aprat from Controller and Service class 
-  #### How to access Apis
+- Would have implement testcase for other class apart from Controller and Service class
+  
+  ### How to access Apis
   #### Step 1:Login
   - For Login has two role
     >>1)Role    :ADMIN / USER                       
@@ -86,10 +87,10 @@ Application (with the embedded H2 database) is ready to be used ! You can access
     >>  Username:otherAxa<br>
     >>  Password:pass123<br>
 
-    >>Description:<br>
-    >>1)Admin: Has all permission to do all employee operation.<br>
-    >>2)User:  Has only create permission<br>
-  -  Login with any above username and password and get the token
+      #### Description
+         1)Admin: Has all permission to do all employee operation.<br>
+         2)User:  Has only create permission<br>
+   -  Login with any above username and password and get the token
    - URL: http://localhost:8080/api/v1/login
    - Request body 
     >> {<br>
@@ -100,23 +101,28 @@ Application (with the embedded H2 database) is ready to be used ! You can access
     >> {<br>
          "token": <br> 
           "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJheGFVc2VyIiwiUm9sZXMiOlsiUk9MRV9VU0VSIiwiUk9MRV9BRE1JTiJdLCJleHAiOjE2ODc2MTkzNzgsIml<br>
-           hdCI6MTY4NzYwMTM3OH0.kPWMIPW_ifc-p2CnNqOfSiLnDTrn2L7MJcVFll05xd-ZuWwii9yI2S7JXArV3Tytg-kMN-2c0bJqDBIg2vh4AA",
+           hdCI6MTY4NzYwMTM3OH0.kPWMIPW_ifc-p2CnNqOfSiLnDTrn2L7MJcVFll05xd-ZuWwii9yI2S7JXArV3Tytg-kMN-2c0bJqDBIg2vh4AA",<br>
        "username": "axaUser",<br>
        "role": "ROLE_ADMIN"<br>
-}<br>
-- Add token in the Authorization header for accessing all APIs as following(Example)
-    >>Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJheGFVc2VyIiwiUm9sZXMiOlsiUk9MRV9VU0VSIiwiUk9MR<br>
+     }<br>
+     #### Step 2:Access other api
+     - Add token in the Authorization header for accessing all APIs as following(Example)
+      >>Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJheGFVc2VyIiwiUm9sZXMiOlsiUk9MRV9VU0VSIiwiUk9MR<br>
           V9BRE1JTiJdLCJleHAiOjE2ODc2MDI3NzIsImlhdCI6MTY4NzU4NDc3Mn0.XHDf95OpoR_i_wWpdS0CgG-<br> 
          QfabMuhd7nOT83ZQ67BYSHn0ERo1oJ8tVtXuZNtOqaUJAuaiKfi9YVT7vyVlSmw<br>
          
-   **Note :1)Do not forget to add "Bearer" before token to access api<br>
-           2)In  employee endpoints ignore the value of id while creating,updating
-####TestCase Run
-- Run `mvn clean test` for starting the testcase 
-
-#### Your experience in Java
-
-- I have 3 years experience in Java and I started to use Spring Boot from last year
-- Using Spring Boot i have devlope API also write JUnit for the devlope api.
-- Use sonarQube to maintain code quality and covergae.
+     >>Note   
+          1)Do not forget to add "Bearer" before token to access api<br>
+          2)In  employee endpoints ignore the value of id while creating,updating<br>
+          
+    ### How to run Testcase 
+     >> To Run TestCasein 2 way<br>
+      1) Run with  `mvn test`  for starting the testcase <br>
+      2) OR Run with  `mvn install` <br>
+         *** Note:If got build error wile running testcase please build path.Maven Dependencies checkbox is checked or not.,br.
+  
+     #### Your experience in Java
+    - I have 3 years experience in Java and I started to use Spring Boot from last year
+    - Using Spring Boot i have devlope API also write JUnit for the devlope api.
+    - Use sonarQube to maintain code quality and covergae.
   
