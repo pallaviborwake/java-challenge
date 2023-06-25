@@ -79,7 +79,7 @@ Application (with the embedded H2 database) is ready to be used ! You can access
   ### How to access Apis
   #### Step 1:Login
   - For Login has two role
-    >>1)Role    :ADMIN / USER                       
+    >>1)Role    :ADMIN                   
     >>  Username:axaUser                                
     >>  Password:password                              
 
@@ -106,14 +106,14 @@ Application (with the embedded H2 database) is ready to be used ! You can access
        "role": "ROLE_ADMIN"<br>
      }<br>
      #### Step 2:Access other api
-     - Add token in the Authorization header for accessing all APIs as following(Example)
-      >>Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJheGFVc2VyIiwiUm9sZXMiOlsiUk9MRV9VU0VSIiwiUk9MR<br>
+     - Add token in the Authorization header for accessing all APIs as following(Example)<br>
+     >>Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJheGFVc2VyIiwiUm9sZXMiOlsiUk9MRV9VU0VSIiwiUk9MR<br>
           V9BRE1JTiJdLCJleHAiOjE2ODc2MDI3NzIsImlhdCI6MTY4NzU4NDc3Mn0.XHDf95OpoR_i_wWpdS0CgG-<br> 
          QfabMuhd7nOT83ZQ67BYSHn0ERo1oJ8tVtXuZNtOqaUJAuaiKfi9YVT7vyVlSmw<br>
          
      >>Note   
-          1)Do not forget to add "Bearer" before token to access api<br>
-          2)In  employee endpoints ignore the value of id while creating,updating<br>
+          1)Do not forget to add "Bearer " before token to access api. Add space after `Bearer`<br>
+          2)In employee endpoints ignore the value of id while creating,updating<br>
           
     ### How to run Testcase 
      >> To Run TestCasein 2 way<br>
@@ -123,6 +123,6 @@ Application (with the embedded H2 database) is ready to be used ! You can access
   
      #### Your experience in Java
     - I have 3 years experience in Java and I started to use Spring Boot from last year
-    - Using Spring Boot i have devlope API also write JUnit for the devlope api.
-    - Use sonarQube to maintain code quality and covergae.
+    - Using Spring Boot I have devloped APIs and have written JUnit for them.
+    - Used sonarQube to maintain code quality and covergae.
   
