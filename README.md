@@ -88,8 +88,8 @@ Application (with the embedded H2 database) is ready to be used ! You can access
     >>  Password:pass123<br>
 
       #### Description
-         1)Admin: Has all permission to do all employee operation.<br>
-         2)User:  Has only create permission<br>
+         1)Admin: Has all permission to do all employee operation.
+         2)User:  Has only create permission(only SaveAPI and this is for showcasing user role only.)
    -  Login with any above username and password and get the token
    - URL: http://localhost:8080/api/v1/login
    - Request body 
